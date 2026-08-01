@@ -6,7 +6,6 @@ def question():
 def FileAttachment():
   uploaded_file = st.file_uploader("Choose a file to attach", type=["csv", "txt", "pdf"])
   if uploaded_file is not None:
-    # Read file bytes or pass directly to libraries like Pandas
     file_details = {"FileName": uploaded_file.name, "FileType": uploaded_file.type}
     st.write(file_details)
     st.success("File attached successfully!")
