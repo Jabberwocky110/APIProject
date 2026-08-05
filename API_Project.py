@@ -1,6 +1,8 @@
 import streamlit as st
 import sqlite3
 import ollama
+import tkinter as tk
+import io
 def FileAttachment():
    uploaded_file = st.file_uploader("Choose a file to attach", type = ["csv", "txt", "pdf"])
    if uploaded_file is not None:
@@ -9,6 +11,11 @@ def FileAttachment():
     st.success("File attached successfully!")
    else:
     print("There was an error attaching your file!")
+   with open(uploaded_file.type, "r", encoding="utf-8") as file:
+    memory_file = io.StringIO(file.read())
+    print(memory_file.getvalue())
+    if uploaded_file.text == "\n":
+      uploaded_file.split
 def question():
  question = st.text_input("Would you like to attach a file (yes or no)")
  question.lower()
